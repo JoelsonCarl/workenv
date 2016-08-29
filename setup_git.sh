@@ -14,9 +14,11 @@ git config --global push.default simple
 git config --global gpg.program gpg2
 
 git_commit_template=~/.git_commit_msg.txt
-echo "subject: summary" > "${git_commit_template}"
-echo >> "${git_commit_template}"
-echo "Description" >> "${git_commit_template}"
-echo >> "${git_commit_template}"
-echo "Signed-off-by: ${username} <${useremail}>" >> "${git_commit_template}"
+{
+	echo "subject: summary"
+	echo
+	echo "Description"
+	echo
+	echo "Signed-off-by: ${username} <${useremail}>"
+} > "${git_commit_template}"
 git config --global commit.template ~/.git_commit_msg.txt
