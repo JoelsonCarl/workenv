@@ -31,8 +31,14 @@ Plugin 'VundleVim/Vundle.vim'
 " different version somewhere else.
 ""Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" Syntastic
+" Syntastic - syntax checking and whatnot
 Plugin 'scrooloose/syntastic'
+" The NERD Tree - file tree navigation
+Plugin 'scrooloose/nerdtree'
+" nerdtree-git-plugin - display git info in NERD Tree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" CtrlP - full path fuzzy file, buffer, mru, tag, ... finder
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,6 +64,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" NERD tree config
+" How can I map a specific key or shortcut to open NERDTree?
+map <C-n> :NERDTreeToggle<CR>
+" How can I close vim if the only window left open is a NERDTree?
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
 
 """""""""""""""""""""""""""""""
 " set leader and key mappings
