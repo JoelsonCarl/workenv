@@ -55,14 +55,21 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" Syntastic newbie settings
+" Syntastic settings
+" For statusline, emulate standard status line with 'ruler' set, then
+" add syntastic stuff
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
+" Automatically populate loc list when :lopen
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_loc_list_height = 1
+" Don't let loc list open automatically
+let g:syntastic_auto_loc_list = 0
+" Run checkers on open and save
 let g:syntastic_check_on_open = 1
+" Don't run checkers on wq
 let g:syntastic_check_on_wq = 0
 
 " NERD tree config
