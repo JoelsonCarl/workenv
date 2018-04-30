@@ -109,7 +109,7 @@ set ignorecase			" Ignore case in search patterns
 set smartcase			" Override ignorecase if pattern contains uppercase
 set laststatus=2		" Always have a status line
 set list			" Display tabs and trailing blanks
-set listchars=trail:.,tab:>.	" Set characters for displaying tabs and trailing spaces
+set listchars=tab:>.,trail:.,extends:#,nbsp:. " Set characters for displaying tabs and trailing spaces
 set showmatch			" When a bracket is inserted, briefly jump to the matching one
 set matchtime=5			" Tenths of a second to show match
 set number			" Print line number in front of each line
@@ -130,3 +130,37 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+	if !&binary && &filetype != 'diff'
+		%s/\s\+$//e
+	endif
+endfunction
+
+"Setup tab spacing and uses whitespace for tabs
+""set tabstop=3
+"set shiftwidth=3
+""set expandtab
+function! SetTabs(useTab, numSpaces)
+	let &tabstop=a:numSpaces
+	let &shiftwidth=a:numSpaces
+	if a:useTab
+		set noexpandtab
+	else
+		set expandtab
+	endif
+endfunction
+
+" Associate Config.in file with kconfig syntax
+au BufRead,BufNewFile *Config*.in* set filetype=kconfig
+
+" Associate defconfig with makefile syntax
+au BufRead,BufNewFile *defconfig set filetype=make
+
+" Asciidoc formating
+autocmd BufRead,BufNewFile *.txt,*.asciidoc,README,TODO,CHANGELOG,NOTES,ABOUT
+			\ setlocal autoindent expandtab tabstop=8 softtabstop=2 shiftwidth=2 filetype=asciidoc
+			\ textwidth=70 wrap formatoptions=tcqn
+			\ formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*<\\d\\+>\\s\\+\\\\|^\\s*[a-zA-Z.]\\.\\s\\+\\\\|^\\s*[ivxIVX]\\+\\.\\s\\+
+			\ comments=s1:/*,ex:*/,://,b:#,:%,:XCOMM,fb:-,fb:*,fb:+,fb:.,fb:>
