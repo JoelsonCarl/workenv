@@ -39,6 +39,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " CtrlP - full path fuzzy file, buffer, mru, tag, ... finder
 Plugin 'ctrlpvim/ctrlp.vim'
+" verilog_systemverilog - syntax checker
+Plugin 'vhda/verilog_systemverilog.vim'
+" vim markdown preview
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -164,3 +168,12 @@ autocmd BufRead,BufNewFile *.txt,*.asciidoc,README,TODO,CHANGELOG,NOTES,ABOUT
 			\ textwidth=70 wrap formatoptions=tcqn
 			\ formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*<\\d\\+>\\s\\+\\\\|^\\s*[a-zA-Z.]\\.\\s\\+\\\\|^\\s*[ivxIVX]\\+\\.\\s\\+
 			\ comments=s1:/*,ex:*/,://,b:#,:%,:XCOMM,fb:-,fb:*,fb:+,fb:.,fb:>
+
+autocmd FileType verilog setlocal nosmartindent shiftwidth=4 tabstop=4 expandtab autoindent
+autocmd FileType verilog_systemverilog setlocal nosmartindent shiftwidth=4 tabstop=4 expandtab autoindent
+
+" for vim markdown preview plugin and using 'grip'
+let vim_markdown_preview_github=1
+
+" For Python syntastic syntax - default to python3
+let g:syntastic_python_checkers = ['python3']
