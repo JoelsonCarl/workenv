@@ -10,15 +10,15 @@ vim +PluginInstall +qall
 
 # Install various syntax checkers
 ## AsciiDoc
-sudo apt-get install asciidoc
-sudo apt-get install asciidoctor
+sudo apt install asciidoc
+sudo apt install asciidoctor
 ## C
-sudo apt-get install clang-tidy
+sudo apt install clang-tidy
 ## JSON
 ### jsonlint needs npm
-sudo apt-get install npm
+sudo apt install npm
 sudo npm install -g jsonlint
 ## Python
-sudo apt-get install pylint
+sudo apt install pylint
 ## Sh
-sudo apt-get install shellcheck
+sudo apt install shellcheck
