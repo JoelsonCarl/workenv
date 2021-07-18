@@ -12,6 +12,7 @@ git config --global user.name "${username}"
 git config --global core.editor vim
 git config --global push.default simple
 git config --global gpg.program gpg2
+git config --global pull.rebase false
 
 git_commit_template=~/.git_commit_msg.txt
 {
