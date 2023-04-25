@@ -14,6 +14,16 @@ Order to Run:
     (must be run after setup_dotfiles.sh)
 
 
+## Vim Markdown Preview
+Starting in Ubuntu 22.04, the Ubuntu version of grip (via apt install) was 4.2.x and trying to
+import 'safe_join' from flask in Python, but 'safe_join' was previously deprecated and is gone from
+the version of flask on the system, making grip crash.
+
+The solution was to make sure Ubuntu's grip was NOT installed, and install grip via
+"pip3 install grip", and then put "${HOME}/.local/bin" into your path. That version of grip should
+be updated to one that does not use 'safe_join'.
+
+
 ## Buildroot Configuration
 Add `BR2_DL_DIR=~/buildroot_dl` to `~/.bashrc` to have all buildroot downloads stored in `~/buildroot_dl`.
 
